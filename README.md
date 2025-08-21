@@ -1,2 +1,1 @@
-# sllow.co-landing
-Sllow
+https://sllow.co/
