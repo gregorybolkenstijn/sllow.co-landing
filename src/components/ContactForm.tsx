@@ -42,9 +42,9 @@ export function ContactForm() {
         <>
           <p>Leave your email address and we'll let you know when we launch.</p>
 
-          <Input placeholder='Your name' required {...register('name')} />
+          <Input type='text' placeholder='Your name' required autoComplete='name' {...register('name')} />
 
-          <Input type='email' placeholder='Your email' required {...register('email')} />
+          <Input type='email' placeholder='Your email' required autoComplete='email' {...register('email')} />
 
           {formStatus === 'error' && (
             <p className='text-red-950 text-sm text-center'>Something went wrong, please try again.</p>
