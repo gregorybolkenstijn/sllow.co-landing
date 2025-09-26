@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Build and deploy to GitHub Pages
 
 on:
   push:
@@ -11,8 +11,8 @@ permissions:
   id-token: write
 
 concurrency:
-  group: 'pages'
-  cancel-in-progress: false
+  group: 'build-and-deploy'
+  cancel-in-progress: true
 
 jobs:
   build:
