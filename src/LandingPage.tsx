@@ -1,5 +1,5 @@
 import './styles/styles.app.css'
-import { ContactForm } from './components/ContactForm'
+//import { ContactForm } from './components/ContactForm'
 import { LogoSvg } from './components/LogoSvg'
 
 export function LandingPage() {
