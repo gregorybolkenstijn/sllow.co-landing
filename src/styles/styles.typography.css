@@ -1,0 +1,13 @@
+@import 'tailwindcss';
+
+.heading {
+  @apply text-48 leading-default tracking-wide font-bold font-sharp-serif;
+}
+
+.paragraph {
+  @apply text-16 leading-default tracking-wide font-crimson-text;
+}
+
+.paragraph-bold {
+  @apply text-16 leading-default tracking-wide font-bold font-crimson-text;
+}

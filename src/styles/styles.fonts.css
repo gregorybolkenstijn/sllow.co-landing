@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'Sharp Serif Text';
+  src:
+    url('/fonts/SharpSerifText-Regular.woff2') format('woff2'),
+    url('/fonts/SharpSerifText-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Crimson Text';
+  src:
+    url('/fonts/CrimsonText-Regular.woff2') format('woff2'),
+    url('/fonts/CrimsonText-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DM Mono';
+  src:
+    url('/fonts/DMMono-Regular.woff2') format('woff2'),
+    url('/fonts/DMMono-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

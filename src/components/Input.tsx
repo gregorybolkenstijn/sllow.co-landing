@@ -1,3 +1,4 @@
+import { clsx } from 'clsx'
 import { HTMLProps, useId } from 'react'
 
 type InputProps = Omit<HTMLProps<HTMLInputElement>, 'className'>
@@ -14,9 +15,12 @@ export const Input = (attributes: InputProps) => {
       <input
         {...attributes}
         id={id}
-        className={
-          'block w-full px-4 py-3 rounded-lg border-2 border-cream bg-transparent text-cream placeholder-cream/70 focus:outline-none focus:border-cream focus:ring-2 focus:ring-cream/20'
-        }
+        className={clsx(
+          'block w-full px-16 py-8 rounded-lg ',
+          'text-16 text-deep-brown placeholder-warm-sand/70',
+          'border-2 bg-cotton-light border-caramel focus:border-deep-brown',
+          'outline-none'
+        )}
       />
     </>
   )

@@ -1,0 +1,51 @@
+@theme {
+  --spacing-*: initial;
+  --spacing-0: 0;
+  --spacing-1: 0.1rem;
+  --spacing-2: 0.2rem;
+  --spacing-4: 0.4rem;
+  --spacing-6: 0.6rem;
+  --spacing-8: 0.8rem;
+  --spacing-12: 1.2rem;
+  --spacing-16: 1.6rem;
+  --spacing-20: 2rem;
+  --spacing-24: 2.4rem;
+  --spacing-28: 2.8rem;
+  --spacing-32: 3.2rem;
+  --spacing-36: 3.6rem;
+  --spacing-40: 4rem;
+  --spacing-48: 4.8rem;
+  --spacing-56: 5.6rem;
+  --spacing-64: 6.4rem;
+  --spacing-72: 7.2rem;
+  --spacing-80: 8rem;
+  --spacing-gutter: 1.6rem;
+
+  --color-caramel: #b67233;
+  --color-cream: #fffdd0;
+  --color-cotton-light: #f9f5ee;
+  --color-deep-brown: #572d2d;
+  --color-warm-oat: #e2d4bc;
+  --color-warm-sand: #ebcb9f;
+
+  --font-sharp-serif: 'Sharp Serif Text', serif;
+  --font-crimson-text: 'Crimson Text', serif;
+  --font-dm-mono: 'DM Mono', monospace;
+
+  --text-*: initial;
+  --text-12: 1.2rem;
+  --text-14: 1.4rem;
+  --text-16: 1.6rem;
+  --text-18: 1.8rem;
+  --text-20: 2rem;
+  --text-24: 2.4rem;
+  --text-32: 3.2rem;
+  --text-40: 4rem;
+  --text-48: 4.8rem;
+  --text-56: 5.6rem;
+  --text-64: 6.4rem;
+  --text-72: 7.2rem;
+  --text-80: 8rem;
+
+  --leading-default: 1.5;
+}

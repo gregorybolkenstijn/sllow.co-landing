@@ -1,0 +1,63 @@
+/*
+Sensible resets on top of Tailwind's preflight styles.
+
+@see https://tailwindcss.com/docs/preflight
+@see https://github.com/tailwindlabs/tailwindcss/blob/main/packages/tailwindcss/preflight.css
+ */
+
+@layer base {
+  /* Prevent background image tiling by default. */
+  *,
+  ::before,
+  ::after {
+    @apply bg-no-repeat;
+  }
+
+  /*
+  1. Reserve scrollbar gutter to avoid layout shifts, fallback for browsers that don't support scrollbar-gutter.
+  2. Remove the grey highlight on links in iOS.
+  3. Reset the base font size to 10px (62.5% * 16px) for easy rem calculations. This makes 1rem = 10px, so you can use
+     rem values that match design specs directly.
+   */
+  html {
+    @apply overflow-y-scroll; /* 1 */
+    -webkit-tap-highlight-color: transparent; /* 2 */
+    font-size: 62.5%; /* 3 */
+  }
+
+  @supports (scrollbar-gutter: stable) {
+    /* Reserve scrollbar gutter to avoid layout shifts; */
+    html {
+      scrollbar-gutter: stable;
+    }
+  }
+
+  /* Prevent horizontal scrollbars on code blocks. */
+  pre {
+    @apply overflow-auto;
+  }
+
+  /* Clean up default button styling. */
+  button {
+    @apply cursor-pointer p-0 text-left;
+
+    font-weight: inherit;
+  }
+
+  /* Remove browser-specific input decorations. */
+  input[type='search']::-webkit-search-cancel-button,
+  input[type='search']::-webkit-search-decoration,
+  input[type='search']::-webkit-search-results-button,
+  input[type='search']::-webkit-search-results-decoration {
+    @apply appearance-none;
+  }
+
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button {
+    @apply appearance-none m-0;
+  }
+
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+}

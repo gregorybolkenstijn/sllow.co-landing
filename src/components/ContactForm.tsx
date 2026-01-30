@@ -3,6 +3,7 @@ import { useState } from 'react'
 
 import { Input } from './Input'
 import { supabase } from '../lib/supabase'
+import { clsx } from 'clsx'
 
 type InputData = {
   name: string
@@ -37,30 +38,33 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className='space-y-4'>
+    <form onSubmit={handleSubmit(onSubmit)} className='block space-y-12'>
       {formStatus !== 'success' && (
         <>
-          <p>Leave your email address and we'll let you know when we launch.</p>
-
           <Input type='text' placeholder='Your name' required autoComplete='name' {...register('name')} />
 
           <Input type='email' placeholder='Your email' required autoComplete='email' {...register('email')} />
 
           {formStatus === 'error' && (
-            <p className='text-red-950 text-sm text-center'>Something went wrong, please try again.</p>
+            <p className='paragraph text-red-950 text-center'>Something went wrong, please try again.</p>
           )}
 
           <button
             type='submit'
             disabled={formStatus === 'submitting'}
-            className='cursor-pointer w-full bg-cream text-primary font-bold py-3 px-6 rounded-lg hover:bg-cream/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed'
+            className={clsx(
+              'cursor-pointer w-full paragraph-bold text-center rounded-lg',
+              'py-8 px-16 bg-caramel text-cotton-light hover:bg-caramel/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed'
+            )}
           >
             {formStatus === 'submitting' ? 'Submitting...' : 'Get notified'}
           </button>
         </>
       )}
 
-      {formStatus === 'success' && <p>Thank you, you'll be one of the first to know when we launch.</p>}
+      {formStatus === 'success' && (
+        <p className='paragraph text-center'>Thank you, you'll be one of the first to know when we launch.</p>
+      )}
     </form>
   )
 }
