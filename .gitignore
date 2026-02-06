@@ -60,6 +60,7 @@ jspm_packages/
 
 # Yarn Integrity file
 .yarn-integrity
+.yarn/install-state.gz
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
