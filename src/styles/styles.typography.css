@@ -1,13 +1,25 @@
 @import 'tailwindcss';
 
-.heading {
-  @apply text-48 leading-default tracking-wide font-bold font-sharp-serif;
+.heading-lg {
+  @apply text-85 leading-[0.95] tracking-normal font-normal font-crimson-text;
 }
 
-.paragraph {
-  @apply text-16 leading-default tracking-wide font-crimson-text;
+.paragraph-sm {
+  @apply text-18 tracking-normal font-crimson-text;
 }
 
-.paragraph-bold {
-  @apply text-16 leading-default tracking-wide font-bold font-crimson-text;
+.paragraph-bold-sm {
+  @apply text-18 tracking-normal font-bold font-crimson-text;
+}
+
+.paragraph-lg {
+  @apply text-28 leading-[1.4] tracking-normal font-crimson-text;
+}
+
+.paragraph-bold-lg {
+  @apply text-28 leading-[1.4] tracking-normal font-bold font-crimson-text;
+}
+
+.paragraph-mono-lg {
+  @apply text-24 leading-[1.4] tracking-[0.25em] uppercase font-dm-mono;
 }

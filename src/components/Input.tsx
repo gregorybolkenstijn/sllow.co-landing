@@ -17,9 +17,10 @@ export const Input = (attributes: InputProps) => {
         id={id}
         className={clsx(
           'block w-full px-16 py-8 rounded-lg ',
-          'text-16 text-deep-brown placeholder-warm-sand/70',
+          'paragraph-sm text-deep-brown placeholder-warm-sand',
           'border-2 bg-cotton-light border-caramel focus:border-deep-brown',
-          'outline-none'
+          'outline-none',
+          'disabled:opacity-50 disabled:cursor-not-allowed'
         )}
       />
     </>

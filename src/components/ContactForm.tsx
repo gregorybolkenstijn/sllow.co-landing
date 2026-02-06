@@ -2,7 +2,7 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import { useState } from 'react'
 
 import { Input } from './Input'
-import { supabase } from '../lib/supabase'
+import { storeContact } from '../server-state/website-contact-form-2026'
 import { clsx } from 'clsx'
 
 type InputData = {
@@ -17,53 +17,63 @@ export function ContactForm() {
   const onSubmit: SubmitHandler<InputData> = async (data) => {
     setFormStatus('submitting')
 
-    try {
-      const { error } = await supabase.from('prelaunch').insert([
-        {
-          name: data.name,
-          email: data.email,
-          signed_up_date: new Date().toISOString(),
-        },
-      ])
+    const result = await storeContact(data)
 
-      if (error) {
-        setFormStatus('error')
-        return
-      }
-
-      setFormStatus('success')
-    } catch {
+    if (!result.success) {
       setFormStatus('error')
+      return
     }
+
+    setFormStatus('success')
   }
 
+  const isSubmitting = formStatus === 'submitting'
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className='block space-y-12'>
+    <form onSubmit={handleSubmit(onSubmit)} className='block space-y-16'>
       {formStatus !== 'success' && (
         <>
-          <Input type='text' placeholder='Your name' required autoComplete='name' {...register('name')} />
+          <p className='paragraph-sm'>Hello, please leave your email address to receive updates from us.</p>
 
-          <Input type='email' placeholder='Your email' required autoComplete='email' {...register('email')} />
+          <div className='space-y-12'>
+            <Input
+              type='text'
+              placeholder='Your name'
+              required
+              autoComplete='name'
+              disabled={isSubmitting}
+              {...register('name')}
+            />
 
-          {formStatus === 'error' && (
-            <p className='paragraph text-red-950 text-center'>Something went wrong, please try again.</p>
-          )}
+            <Input
+              type='email'
+              placeholder='Your email address'
+              required
+              autoComplete='email'
+              disabled={isSubmitting}
+              {...register('email')}
+            />
 
-          <button
-            type='submit'
-            disabled={formStatus === 'submitting'}
-            className={clsx(
-              'cursor-pointer w-full paragraph-bold text-center rounded-lg',
-              'py-8 px-16 bg-caramel text-cotton-light hover:bg-caramel/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed'
+            {formStatus === 'error' && (
+              <p className='paragraph-sm text-red-950 text-center'>Something went wrong, please try again.</p>
             )}
-          >
-            {formStatus === 'submitting' ? 'Submitting...' : 'Get notified'}
-          </button>
+
+            <button
+              type='submit'
+              disabled={isSubmitting}
+              className={clsx(
+                'cursor-pointer w-full paragraph-bold-sm text-center rounded-lg',
+                'py-8 px-16 bg-caramel text-cotton-light hover:bg-caramel/90 focus:outline-none focus:bg-caramel/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed'
+              )}
+            >
+              {isSubmitting ? 'Sending...' : 'Submit'}
+            </button>
+          </div>
         </>
       )}
 
       {formStatus === 'success' && (
-        <p className='paragraph text-center'>Thank you, you'll be one of the first to know when we launch.</p>
+        <p className='paragraph-sm text-center'>Thank you, you'll be one of the first to know when we launch.</p>
       )}
     </form>
   )
