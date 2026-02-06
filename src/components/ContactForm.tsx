@@ -22,13 +22,16 @@ export function ContactForm() {
     if (!formElement) return
 
     const updateHeight = () => {
-      const currentHeight = formElement.getBoundingClientRect().height
+      requestAnimationFrame(() => {
+        const currentHeight = formElement.scrollHeight
 
-      if (currentHeight > maxHeightRef.current) {
-        maxHeightRef.current = currentHeight
-        const remHeight = currentHeight / 16
-        formElement.style.height = `${remHeight}rem`
-      }
+        console.log('currentHeight', currentHeight)
+
+        if (currentHeight > maxHeightRef.current) {
+          maxHeightRef.current = currentHeight
+          formElement.style.height = `${currentHeight / 10}rem`
+        }
+      })
     }
 
     const resizeObserver = new ResizeObserver(updateHeight)
