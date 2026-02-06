@@ -1,5 +1,5 @@
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { Input } from './Input'
 import { storeContact } from '../server-state/website-contact-form-2026'
@@ -13,6 +13,33 @@ type InputData = {
 export function ContactForm() {
   const { register, handleSubmit } = useForm<InputData>()
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+  const formRef = useRef<HTMLFormElement>(null)
+  const maxHeightRef = useRef<number>(0)
+
+  useEffect(() => {
+    const formElement = formRef.current
+
+    if (!formElement) return
+
+    const updateHeight = () => {
+      const currentHeight = formElement.getBoundingClientRect().height
+
+      if (currentHeight > maxHeightRef.current) {
+        maxHeightRef.current = currentHeight
+        const remHeight = currentHeight / 16
+        formElement.style.height = `${remHeight}rem`
+      }
+    }
+
+    const resizeObserver = new ResizeObserver(updateHeight)
+
+    updateHeight()
+    resizeObserver.observe(formElement)
+
+    return () => {
+      resizeObserver.disconnect()
+    }
+  }, [formStatus])
 
   const onSubmit: SubmitHandler<InputData> = async (data) => {
     setFormStatus('submitting')
@@ -30,7 +57,7 @@ export function ContactForm() {
   const isSubmitting = formStatus === 'submitting'
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className='block space-y-16'>
+    <form ref={formRef} onSubmit={handleSubmit(onSubmit)} className='block space-y-16'>
       {formStatus !== 'success' && (
         <>
           <p className='paragraph-sm'>Hello, please leave your email address to receive updates from us.</p>
@@ -63,7 +90,7 @@ export function ContactForm() {
               disabled={isSubmitting}
               className={clsx(
                 'cursor-pointer w-full paragraph-bold-sm text-center rounded-lg',
-                'py-8 px-16 bg-caramel text-cotton-light hover:bg-caramel/90 focus:outline-none focus:bg-caramel/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed'
+                'py-8 px-16 bg-warm-oat text-deep-brown hover:bg-warm-oat/80 focus:outline-none focus:bg-warm-oat/90 transition-colors disabled:opacity-70 disabled:cursor-not-allowed'
               )}
             >
               {isSubmitting ? 'Sending...' : 'Submit'}
