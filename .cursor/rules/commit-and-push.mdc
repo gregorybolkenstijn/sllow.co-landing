@@ -1,0 +1,22 @@
+---
+description: Git identity and GitHub CLI before commit/push
+alwaysApply: true
+---
+
+# Commit and push workflow
+
+Before committing or pushing in this repo:
+
+1. **Git config** (use this repo’s identity):
+   ```bash
+   git config user.name "Gregory Bolkenstijn"
+   git config user.email "greg@soundofsilver.nl"
+   ```
+   This is stored in the repo’s local config; ensure it’s set when working here.
+
+2. **GitHub CLI**: Use the account for greg@soundofsilver.nl:
+   ```bash
+   gh auth switch --user gregorybolkenstijn
+   ```
+
+Then run your usual `git add`, `git commit`, and `git push`.
