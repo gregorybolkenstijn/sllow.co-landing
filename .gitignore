@@ -100,5 +100,8 @@ ehthumbs.db
 Desktop.ini
 $RECYCLE.BIN/
 
+# Internal docs
+docs/internal/
+
 # Local development
 *.local
