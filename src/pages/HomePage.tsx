@@ -9,7 +9,7 @@ export function HomePage() {
       style={{ backgroundImage: 'url(/sllow-texture.webp)' }}
     >
       <div className='text-center space-y-64 w-full max-w-[32rem]'>
-        <LogoSvg className='w-[18rem] h-auto mx-auto' />
+        <LogoSvg className='w-[18rem] h-auto mx-auto overflow-visible' />
         <ContactForm />
       </div>
     </div>
